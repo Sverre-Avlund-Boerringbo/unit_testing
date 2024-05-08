@@ -2,6 +2,9 @@ import pygame
 import random
 from os import path
 
+FILBANE = path.dirname(__file__)
+FILBANE_RESSURSER = path.join(FILBANE, "ressurser")
+
 
 def stein_saks_papir(type1: int, type2: int) -> int:
     """
@@ -28,9 +31,11 @@ class Bilder:
         pass
 
     def last_bilder(self, storrelse: int):
-        self.stein = pygame.image.load(path.join("ressurser", "stein.png"))
-        self.saks = pygame.image.load(path.join("ressurser", "saks.png"))
-        self.papir = pygame.image.load(path.join("ressurser", "papir.png"))
+        self.stein = pygame.image.load(
+            path.join(FILBANE_RESSURSER, "stein.png"))
+        self.saks = pygame.image.load(path.join(FILBANE_RESSURSER, "saks.png"))
+        self.papir = pygame.image.load(
+            path.join(FILBANE_RESSURSER, "papir.png"))
         self.bilder: list[pygame.Surface] = [self.stein, self.saks, self.papir]
         for i, bilde in enumerate(self.bilder):
             self.bilder[i] = pygame.transform.smoothscale(
